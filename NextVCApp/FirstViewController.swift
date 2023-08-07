@@ -16,9 +16,11 @@ class FirstViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor.blue
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        button.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        button.addTarget(FirstViewController.self, action: #selector(backButtonTapped), for: .touchUpInside)
         return button
     }()
+    
+    var someString: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +29,9 @@ class FirstViewController: UIViewController {
     }
     
     func configureUI(){
-        mainLabel.text = "FirstViewController"
+        mainLabel.text = someString
+        mainLabel.font = UIFont.systemFont(ofSize: 22)
+        mainLabel.textColor = UIColor.black
         
         view.addSubview(mainLabel)
         
@@ -47,6 +51,7 @@ class FirstViewController: UIViewController {
     }
 
     @objc func backButtonTapped(){
-        
+        print("뒤로가기 눌렸음")
+        dismiss(animated: true)
     }
 }
